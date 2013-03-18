@@ -1,0 +1,13 @@
+1) cross compile gcc
+
+* brew install gcc47
+* brew install binutils
+
+2) Tutorial
+
+http://wiki.osdev.org/Bare_Bones
+
+3) Grub
+
+ftp://alpha.gnu.org/gnu/grub/grub-0.97-i386-pc.tar.gz
+
