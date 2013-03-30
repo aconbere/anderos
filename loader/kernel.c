@@ -18,7 +18,11 @@ void kmain(void) {
   /* or do your offsets yourself. The following is merely an example. */
   //char * boot_loader_name =(char*) ((long*)mbd)[16];
 
-  /* Print a letter to screen to see everything is working: */
-  video_clear();
-  video_write_string("Hi, this is AnderOS", 0x2a);
+  framebuffer_t fb;
+  framebuffer_reset(&fb);
+  framebuffer_clear(&fb);
+
+  framebuffer_move_cursor(&fb, 10,10);
+
+  framebuffer_write_string(&fb, "Hi, this is AnderOS", 0x2a);
 }
