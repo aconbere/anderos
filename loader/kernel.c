@@ -1,34 +1,6 @@
 #include "stdint.h"
+#include "video.h"
 
-// note this example will always write to the top
-// line of the screen
-void video_write_string( volatile unsigned char *video, const char *string, int color ) {
-  while( *string != 0 ) {
-    *video++ = *string++;
-    *video++ = color;
-  }
-}
-
-void video_clear( volatile unsigned char *video ) {
-    int i = 0;
-    int max_string = 80*25;
-    char string[max_string];
-
-    while (i <= max_string) {
-      string[i] = ' ';
-      i++;
-    }
-
-    video_write_string(video, string, 0x00);
-}
-
-void interupt_handler(void) {
-  volatile unsigned char *videoram = (unsigned char *)0xB8000;
-  video_write_string(videoram, "wtf", 0x2a);
-  asm("cli");
-  asm("hlt");
-}
- 
 void kmain(void) {
   extern uint32_t magic;
 
@@ -47,7 +19,6 @@ void kmain(void) {
   //char * boot_loader_name =(char*) ((long*)mbd)[16];
 
   /* Print a letter to screen to see everything is working: */
-  volatile unsigned char *videoram = (unsigned char *)0xB8000;
-  video_clear(videoram);
-  video_write_string(videoram, "Hi, this is AnderOS", 0x2a);
+  video_clear();
+  video_write_string("Hi, this is AnderOS", 0x2a);
 }
