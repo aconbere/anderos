@@ -4,7 +4,9 @@
 
 // This gets called from our ASM interrupt handler stub.
 void isr_handler(registers_t regs) {
-    video_write_string("recieved interrupt: ", 0x2a);
-    video_write_decimal(regs.int_no);
-    video_write_char('\n', 0x2a);
+  framebuffer_t fb;
+  framebuffer_reset(&fb);
+  framebuffer_clear(&fb);
+  framebuffer_move_cursor(&fb, 0, 1);
+  framebuffer_write_string(&fb, "recieved interupt", 0x2a);
 }
