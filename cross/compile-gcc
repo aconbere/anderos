@@ -17,3 +17,5 @@ pushd local/build-gcc
 make all-gcc
 make install-gcc
 
+make all-target-libgcc
+make install-target-libgcc

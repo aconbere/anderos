@@ -26,6 +26,6 @@ void kmain(void) {
   framebuffer_reset(&fb);
   framebuffer_clear(&fb);
   framebuffer_write_string(&fb, "Hi, this is AnderOS", 0x2a);
-  asm volatile ("int $0x3");
-  asm volatile ("int $0x4");
+  // asm volatile ("int $0x3");
+  // asm volatile ("int $0x4");
 }
